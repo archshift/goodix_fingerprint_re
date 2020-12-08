@@ -1,20 +1,36 @@
 ### Ecall interface
 
-| Index | Name                            | Description                                                          | Signature                                  |
-|-------|---------------------------------|----------------------------------------------------------------------|--------------------------------------------|
-| 0x0   | JudgePower                      | Used to decide if the enclave is already active on initialization    | int(void)                                  |
-| 0x1   | SaveCaliToLocalFile_E           | Saves calibration data                                               |                                            |
-| 0x2   | Attach_E                        | Used to initialize algorithm?                                        |                                            |
-| 0x3   | Detach_E                        |                                                                      | int(int *internal_err)                     |
-| 0x4   | ClearContext_E                  |                                                                      | int(int *internal_err)                     |
-| 0x5   | CheckUpdateArgument_E           |                                                                      |                                            |
-| 0x6   | CheckEnrollmentTemplate_E       |                                                                      |                                            |
-| 0x7   | DestroyEnrollmentTemplate_E     |                                                                      |                                            |
-| 0x8   | InitPreProcessor_E              |                                                                      |                                            |
-| 0x9   | PreProcessor_E                  |                                                                      |                                            |
-| 0xA   | PreProcessorRelease_E           |                                                                      |                                            |
-| 0xB   | JudgeQuality_E                  |                                                                      |                                            |
-| 0xC   | CreateEnrollment_E              |                                                                      |                                            |
-| 0xD   | MergeFeatureSetWithEnrollment_E |                                                                      |                                            |
-| 0x17  | ?                               | Used directly after creating enclave. Driver checks output int != 0. | int(int *internal_err)                     |
-| 0x19  | SendEnMessage                   |                                                                      | int(int *internal_err, char *str, int len) |
+| Index | Name                                             | Description                                                          | Signature                                                                                           |
+|-------|--------------------------------------------------|----------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| 0x0   | JudgePower                                       | Used to decide if the enclave is already active on initialization    | int(void)                                                                                           |
+| 0x1   | SaveCaliToLocalFile_E                            | Saves calibration data                                               |                                                                                                     |
+| 0x2   | Attach_E                                         | Used to initialize algorithm?                                        |                                                                                                     |
+| 0x3   | Detach_E                                         |                                                                      | `int(int *internal_err)`                                                                            |
+| 0x4   | ClearContext_E                                   |                                                                      | `int(int *internal_err)`                                                                            |
+| 0x5   | CheckUpdateArgument_E                            |                                                                      |                                                                                                     |
+| 0x6   | CheckEnrollmentTemplate_E                        |                                                                      |                                                                                                     |
+| 0x7   | DestroyEnrollmentTemplate_E                      |                                                                      |                                                                                                     |
+| 0x8   | InitPreProcessor_E                               |                                                                      |                                                                                                     |
+| 0x9   | PreProcessor_E                                   |                                                                      |                                                                                                     |
+| 0xA   | PreProcessorRelease_E                            |                                                                      |                                                                                                     |
+| 0xB   | JudgeQuality_E                                   |                                                                      |                                                                                                     |
+| 0xC   | CreateEnrollment_E                               |                                                                      |                                                                                                     |
+| 0xD   | MergeFeatureSetWithEnrollment_E                  |                                                                      |                                                                                                     |
+| 0xE   | CheckEnrollmentStatus_E                          |                                                                      | `int(int *internal_err, unk*, unk*, unk*)`                                                          |
+| 0xF   | GetTemplateSize_E                                |                                                                      | `int(int *internal_err, unk*)`                                                                      |
+| 0x10  | CommitEnrollment_E                               |                                                                      | `int(int *internal_err, unk, unk)`                                                                  |
+| 0x11  | CmpTemplateToEnrollmentTemplate_E                |                                                                      | `int(int *internal_err, unk, unk, unk*)`                                                            |
+| 0x12  | CmpTemplateToCurrentFeatureSet_E                 |                                                                      | `int(int *internal_err, unk, unk, unk*, unk, unk)`                                                  |
+| 0x13  | QueryExtendedEnrollmentStatus_E                  |                                                                      | `int(int *internal_err, unk*, unk*, unk*)`                                                          |
+| 0x14  | FRRGetWidthHeight_E                              |                                                                      | `int(int *internal_err, uint8_t *width, uint8_t *height)`                                           |
+| 0x15  | GetAlgorithmVersion_E                            |                                                                      | `int(int *internal_err, char buf[0x40], size_t buf_size)`                                           |
+| 0x16  | ?                                                |                                                                      | `int(unk, unk, unk, unk, unk, unk)`                                                                 |
+| 0x17  | ?                                                | Used directly after creating enclave. Driver checks output int != 0. | `int(int *internal_err)`                                                                            |
+| 0x18  | FrrCmpCachedTemplateToCurrentFeatureSetRelease_E |                                                                      | int(void)                                                                                           |
+| 0x19  | SendEnMessage                                    |                                                                      | `int(int *internal_err, char *str, int len)`                                                        |
+| 0x1A  | Performace_AcceptSampleData_E                    |                                                                      | `int(int *internal_err, uint8_t, unk*, unk*, unk*, unk, unk)`                                       |
+| 0x1B  | OpenShort_Result_E                               |                                                                      | `int(int *internal_err, unk*, int16_t, int, int16_t, unk, unk, uint32_t)`                           |
+| 0x1C  | FlatEnd_Result_E                                 |                                                                      | `int(int *internal_err, unk, unk, int16_t, int16_t, unk, int16_t, int16_t, unk*, unk*, unk*, unk*)` |
+| 0x1D  | CopyFrame                                        |                                                                      | `int(int *internal_err, unk, unk, unk, unk, uint16_t)`                                              |
+| 0x1E  | ProcessCore                                      |                                                                      | `int(int unk*, unk*, unk*)`                                                                         |
+| 0x1F  | ?                                                |                                                                      | `int(unk, unk)`                                                                                     |
